@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2020 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>gke-auditor</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>${mvnplugins.version}</version>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.google.gke.auditor.Main</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <version>3.3.0</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.0.0-M4</version>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <dependencies>
+
+    <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+    <dependency>
+      <artifactId>gson</artifactId>
+      <groupId>com.google.code.gson</groupId>
+      <version>${gson.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.kubernetes/client-java -->
+    <dependency>
+      <artifactId>client-java</artifactId>
+      <groupId>io.kubernetes</groupId>
+      <version>${client-java.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util -->
+    <dependency>
+      <artifactId>protobuf-java-util</artifactId>
+      <groupId>com.google.protobuf</groupId>
+      <version>${protobuf.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
+    <dependency>
+      <artifactId>commons-cli</artifactId>
+      <groupId>commons-cli</groupId>
+      <version>${commons-cli.version}</version>
+    </dependency>
+
+    <!-- Silence slf4j warning-->
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
+    <dependency>
+      <artifactId>slf4j-nop</artifactId>
+      <groupId>org.slf4j</groupId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!-- Test dependencies -->
+    <dependency>
+      <artifactId>junit-bom</artifactId>
+      <groupId>org.junit</groupId>
+      <scope>import</scope>
+      <type>pom</type>
+      <version>${junit.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>assertj-core</artifactId>
+      <groupId>org.assertj</groupId>
+      <scope>test</scope>
+      <version>${assertj.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>mockito-core</artifactId>
+      <groupId>org.mockito</groupId>
+      <scope>test</scope>
+      <version>${mockito.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>junit</artifactId>
+      <groupId>junit</groupId>
+      <scope>test</scope>
+      <version>4.12</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>junit-jupiter</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <scope>test</scope>
+      <version>RELEASE</version>
+    </dependency>
+
+  </dependencies>
+
+  <groupId>gke-auditor</groupId>
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <assertj.version>3.15.0</assertj.version>
+    <client-java.version>9.0.2</client-java.version>
+    <commons-cli.version>1.4</commons-cli.version>
+    <gson.version>2.8.6</gson.version>
+    <junit.version>5.6.0</junit.version>
+    <mockito.version>3.2.4</mockito.version>
+    <mvnplugins.version>3.8.1</mvnplugins.version>
+    <protobuf.version>3.12.2</protobuf.version>
+    <slf4j.version>1.7.30</slf4j.version>
+  </properties>
+  <version>1.0-SNAPSHOT</version>
+</project>
