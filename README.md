@@ -33,8 +33,8 @@ after installing the Google Cloud SDK into your local machine.
 
 ## Installation
 ```bash
-git clone https://source.developers.google.com/p/gke-auditor/r/gke-auditor-java
-cd ./gke-auditor-java/
+git clone https://github.com/google/gke-auditor
+cd ./gke-auditor/
 ./build.sh
 ```
 
