@@ -356,7 +356,7 @@ public class Logger {
      * Returns the message in the format "Key: value" without coloring.
      */
     public String getMessage() {
-      return (key == null ? "" : Color.DEFAULT_BOLD.code + key + Color.RESET.code + ": ") + value;
+      return (key == null ? "" : key  + ": ") + value;
     }
 
     /**
