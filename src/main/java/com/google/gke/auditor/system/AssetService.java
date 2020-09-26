@@ -338,8 +338,11 @@ public class AssetService {
             if (pod.getServiceAccount() != null && pod.getServiceAccount().equals(serviceAccount)) {
               Node node = (Node) DetectorUtil
                   .getFromCollection(nodes, pod.getNodeName(), n -> ((Node) n).getNodeName());
-              Dependency dependency = new Dependency(binding, role, serviceAccount, node, pod);
-              dependencies.add(dependency);
+
+              if (node != null) {
+                  Dependency dependency = new Dependency(binding, role, serviceAccount, node, pod);
+                  dependencies.add(dependency);
+              }
             }
           }
         }
